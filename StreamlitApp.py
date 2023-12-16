@@ -13,7 +13,7 @@ import streamlit as st
 from langchain.callbacks import get_openai_callback
 
 #loading json file
-with open('D:\project\QnA_Generator\Response.json', 'r') as file:
+with open('Response.json', 'r') as file:
     RESPONSE_JSON = json.load(file)
     
 #creating a title for the app

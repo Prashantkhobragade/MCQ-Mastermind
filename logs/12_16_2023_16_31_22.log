@@ -1,0 +1,2 @@
+[2023-12-16 16:31:58,635] 1013 httpx - INFO -HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[2023-12-16 16:32:00,957] 1013 httpx - INFO -HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

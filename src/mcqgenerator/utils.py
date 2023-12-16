@@ -6,7 +6,7 @@ import traceback
 def read_file(file):
     if file.name.endswith(".pdf"):
         try:
-            pdf_reader = PyPDF2.PdfFileReader(file)
+            pdf_reader = PyPDF2.PdfReader(file)
             text = ""
             for page in pdf_reader.pages:
                 text += page.extract_text()
@@ -16,7 +16,7 @@ def read_file(file):
             raise Exception("error reading the PDF file")
     
     elif file.name.endswith(".txt"):
-        return file.read().decode("uft-8")
+        return file.read().decode("utf-8")
     
     else:
         raise Exception(
@@ -35,7 +35,7 @@ def get_table_data(quiz_str):
             mcq = value['mcq']
             options = " || ".join(
                 [
-                    f"{option}-> {option_value}" for option, option_value in value["options"].item()
+                    f"{option}-> {option_value}" for option, option_value in value["options"].items()
                 ]
             )
             

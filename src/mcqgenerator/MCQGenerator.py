@@ -26,7 +26,8 @@ try:
     if not KEY:
         raise ValueError("OpenAI API not found in environment variable")
 except Exception as e:
-    raise Exception(f"Error: {e}")
+    logging.error (f"Error loading OpenAI API key: {e}")
+    raise
     
     
 llm = ChatOpenAI(openai_api_key = KEY,
