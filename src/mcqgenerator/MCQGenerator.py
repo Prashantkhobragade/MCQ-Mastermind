@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 from src.mcqgenerator.logger import logging
-from src.mcqgenerator.utils import read_file
+from src.mcqgenerator.utils import read_file, get_table_data
 
 #Importing from Langchain 
 from langchain.chat_models import ChatOpenAI
@@ -26,7 +26,7 @@ try:
     if not KEY:
         raise ValueError("OpenAI API not found in environment variable")
 except Exception as e:
-    logging.error(f"Error: {e}")
+    raise Exception(f"Error: {e}")
     
     
 llm = ChatOpenAI(openai_api_key = KEY,
