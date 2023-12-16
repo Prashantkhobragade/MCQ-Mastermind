@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 
 from src.mcqgenerator.utils import read_file, get_table_data
 from src.mcqgenerator.logger import logging
-from src.mcqgenerator.MCQGenerator import generator_evaluate_chain
+#from src.mcqgenerator.MCQGenerator import generator_evaluate_chain
+#from src.mcqgenerator.MCQGenerator import evaluate_quiz_sequence
 import streamlit as st 
 
 #Importing from Langchain

@@ -29,10 +29,15 @@ except Exception as e:
     logging.error (f"Error loading OpenAI API key: {e}")
     raise
     
-    
-llm = ChatOpenAI(openai_api_key = KEY,
-                 model_name ='gpt-3.5-turbo',
-                 temperature=0.5)
+def initialize_openai_llm(api_key):
+    try:
+        return ChatOpenAI(openai_api_key = KEY,
+                model_name ='gpt-3.5-turbo',
+                temperature=0.5)
+        
+    except Exception as e:
+        logging.error(f"Error initializing OpenAI LLM: {e}")
+        raise
 
 TEMPLATE="""
 Text:{text}
@@ -44,13 +49,13 @@ Ensure to make {number} MCQs
 ### RESPONSE_JSON
 {response_json}
 """
+def generate_quiz_chain(llm_instance):
+    quiz_generation_prompt = PromptTemplate(
+            input_variables=["text", "number", "subject", "tone", "response_json"],
+            template=TEMPLATE
+        )
 
-quiz_generation_prompt = PromptTemplate(
-    input_variables=["text", "number", "subject", "tone", "response_json"],
-    template=TEMPLATE
-)
-
-quiz_chain = LLMChain(llm=llm,
+    return LLMChain(llm=llm_instance,
                       prompt=quiz_generation_prompt,
                       output_key="quiz",
                       verbose=True)
@@ -66,24 +71,31 @@ Quiz_MCQs:
 
 Check from an expert English Writer of the above quiz:
 """
+def evaluate_quiz_chain(llm_instance):
+    quiz_evaluation_prompt = PromptTemplate(
+        input_variables=["subject", "quiz"],
+        template=TEMPLATE2
+    )
+    
+    return LLMChain(
+        llm=llm_instance,
+        prompt=quiz_evaluation_prompt,
+        output_key="review",
+        verbose=True
+    )
 
-quiz_evaluation_prompt = PromptTemplate(
-    input_variables=["subject", "quiz"],
-    template=TEMPLATE2
-)
 
-
-review_chain = LLMChain(
-    llm=llm,
-    prompt=quiz_evaluation_prompt,
-    output_key="review",
-    verbose=True
-)
-
-
-generator_evaluate_chain = SequentialChain(
-    chains=[quiz_chain, review_chain],
+def evaluate_quiz_sequence(chains):
+    return SequentialChain(
+    chains=chains,
     input_variables=["text", "number", "subject", "tone", "response_json"],
     output_variables=["quiz", "review"],
     verbose=True
 )
+
+
+if __name__ == "__main__":
+    openai_llm = initialize_openai_llm(KEY)
+    quiz_chain = generate_quiz_chain(openai_llm)
+    review_chain = evaluate_quiz_chain(openai_llm)
+    generator_evaluate_chain = evaluate_quiz_sequence([quiz_chain, review_chain])
