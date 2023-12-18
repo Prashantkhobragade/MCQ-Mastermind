@@ -6,19 +6,33 @@ from dotenv import load_dotenv
 
 from src.mcqgenerator.utils import read_file, get_table_data
 from src.mcqgenerator.logger import logging
-#from src.mcqgenerator.MCQGenerator import generator_evaluate_chain
+from src.mcqgenerator.MCQGenerator import generator_evaluate_chain
 #from src.mcqgenerator.MCQGenerator import evaluate_quiz_sequence
 import streamlit as st 
 
+
+
 #Importing from Langchain
 from langchain.callbacks import get_openai_callback
+
+
+#load environment veriable from .env
+load_dotenv()
+
+try:
+    KEY = os.getenv("OPENAI_API_KEY")
+    if not KEY:
+        raise ValueError("OpenAI API not found in environment variable")
+except Exception as e:
+    logging.error (f"Error loading OpenAI API key: {e}")
+    raise
 
 #loading json file
 with open('Response.json', 'r') as file:
     RESPONSE_JSON = json.load(file)
     
 #creating a title for the app
-st.title("MCQs Creator Application with Langchain ")
+st.title("MCQs Creator Application with LangChain 🦜⛓️ ")
 
 #create a form using st.form
 with st.form("user_inputs"):
@@ -46,7 +60,7 @@ with st.form("user_inputs"):
                 text = read_file(uploaded_file)
                 #count tokens and cost of API call
                 with get_openai_callback() as cb:
-                    response = generator_evaluate_chain(
+                    response = generator_evaluate_chain(KEY)(
                         {
                             "text": text,
                             "number": mcq_count,

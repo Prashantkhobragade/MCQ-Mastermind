@@ -93,9 +93,12 @@ def evaluate_quiz_sequence(chains):
     verbose=True
 )
 
-
-if __name__ == "__main__":
+def generator_evaluate_chain(KEY):
     openai_llm = initialize_openai_llm(KEY)
     quiz_chain = generate_quiz_chain(openai_llm)
     review_chain = evaluate_quiz_chain(openai_llm)
-    generator_evaluate_chain = evaluate_quiz_sequence([quiz_chain, review_chain])
+    return evaluate_quiz_sequence([quiz_chain, review_chain])
+
+
+if __name__ == "__main__":
+    generator_evaluate_chain(KEY)
