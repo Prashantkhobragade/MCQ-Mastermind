@@ -23,7 +23,7 @@ This project is built using the following technologies:
 
 1. **Clone the Universe (or just this repository):**
     ```
-    git clone https://github.com/Prashantkhobragade/QnA_Generator.git
+    git clone https://github.com/Prashantkhobragade/MCQ-Mastermind.git
     ```
 2. **Install the Magic Spells (dependencies):**
     ```
