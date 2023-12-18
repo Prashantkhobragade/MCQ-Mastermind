@@ -10,6 +10,7 @@ This project is built using the following technologies:
 - **Langchain**: A package used for generating and evaluating quizzes.
 - **Streamlit**: A Python library used to create the web interface for the application.
 - **OpenAI API**: Used to interact with the OpenAI models.
+- **OpenAI Model**: gpt-3.5-turbo
 - **PyPDF2**: A Python library used for handling PDF files.
 
 ## 🧩 Project Structure
