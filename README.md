@@ -35,6 +35,10 @@ streamlit run StreamlitApp.py
 
 ```
 
+## ⚠️ Limitations
+
+Please note that the model can handle up to 4000 tokens at a time. If your input text exceeds this limit, you may need to shorten it or split it into multiple parts.
+
 
 ## 🤝 Contributing
 
