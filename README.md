@@ -2,7 +2,15 @@
 
 Welcome to MCQ Mastermind, a project that harnesses the power of artificial intelligence to create and evaluate multiple-choice quizzes. This project is perfect for educators, students, or trivia enthusiasts looking for a smart way to generate and assess quizzes.
 
+## ⚙️ Tech Stack
 
+This project is built using the following technologies:
+
+- **Python**: The backbone of the project. All the scripts are written in Python.
+- **Langchain**: A package used for generating and evaluating quizzes.
+- **Streamlit**: A Python library used to create the web interface for the application.
+- **OpenAI API**: Used to interact with the OpenAI models.
+- **PyPDF2**: A Python library used for handling PDF files.
 
 ## 🧩 Project Structure
 
