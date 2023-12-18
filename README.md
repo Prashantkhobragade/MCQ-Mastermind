@@ -7,6 +7,7 @@ Welcome to MCQ Mastermind, a project that harnesses the power of artificial inte
 ## 🧩 Project Structure
 
 - `MCQGenerator.py`: The brain of the operation! This script uses the mystical powers of the Langchain package to generate and evaluate multiple-choice quizzes.
+
 - `StreamlitApp.py`: The face of the operation! This script provides a user-friendly Streamlit interface for the MCQ generator and evaluator.
 
 
@@ -14,7 +15,7 @@ Welcome to MCQ Mastermind, a project that harnesses the power of artificial inte
 
 1. **Clone the Universe (or just this repository):**
     ```
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/Prashantkhobragade/QnA_Generator.git
     ```
 2. **Install the Magic Spells (dependencies):**
     ```
@@ -37,9 +38,9 @@ streamlit run StreamlitApp.py
 
 ## 🤝 Contributing
 
-We welcome wizards and witches from all houses! Feel free to open a pull request. For major changes, please open an issue first to discuss what you would like to change.
+I welcome wizards and witches from all houses! Feel free to open a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
 
 ## 🎉 Final Words
 
-We hope you enjoy using MCQ Mastermind as much as we enjoyed brewing it. Happy quizzing!
+I hope you enjoy using MCQ Mastermind as much as we enjoyed brewing it. Happy quizzing!
